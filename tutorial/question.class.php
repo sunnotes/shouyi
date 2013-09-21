@@ -5,12 +5,8 @@
 <?php
 class Question
 {
-	/*
-	* $question  用户提交的问题
-	*/
 	public function getQuestionList($question)
 	{
-		//预定义的关键词
 		static $keywordlist = array(
 				'1' => '收益',
 				'2' => '结算',
@@ -31,7 +27,7 @@ class Question
 				'17' => '开始',
 				'18' => '转入'
 		);
-		//抽取问题中的关键词
+
 		$i = 0;
 		foreach ($keywordlist as $keyword) {
 			if(strpos($question, $keyword)!==false)
@@ -40,7 +36,7 @@ class Question
 				$i++;
 			}
 		}
-		//通过LIKE查询，获取和关键词关联的问题
+		//print_r( $keywords);
 		$sql = 'SELECT  code ,question  FROM question WHERE 1!=1 ' ;
 		if (isset($keywords)) {
 			foreach ($keywords as $keyword){
@@ -54,15 +50,13 @@ class Question
 		$result = $mysql->getData( $sql );
 		$content ="小宝猜您想知道:\n";
 		foreach ($result as $record){
-			$content = $content.$record['code'].' '.$record['question']."\n";
+			$content = $content.$record['code'].' '.$record['question']."\n\n";
 		}
 		$content = $content."......\n 回复数字编码查看回答 \n 000  返回更多问题";
 		return $content;
 	}
 
-	/*
-	* 返回所有的问题单
-	*/
+
 	public function getAllQuestionList()
 	{		
 		$sql = 'SELECT  code ,question  FROM question order by id ' ;		
@@ -70,16 +64,13 @@ class Question
 		$result = $mysql->getData( $sql );
 		$content ="回复数字编码查看回答:\n";
 		foreach ($result as $record){
-			$content = $content.$record['code'].' '.$record['question']."\n";
+			$content = $content.$record['code'].' '.$record['question']."\n\n";
 		}
 		$content = $content."......\n 000  返回更多问题";
 		return $content;
 	}
 	
-	/*
-	* $questioncode  问题编码
-	* 返回问题答案，其中 000 0001 需特殊处理
-	*/
+
 	public function getAnswer($questioncode) {
 		$sql = "SELECT  question,answer  FROM question WHERE code = $questioncode " ;
 		$mysql = new SaeMysql();
@@ -90,5 +81,8 @@ class Question
 			$content = $questioncode.' '.$result[0]['question']."\n\n".$result[0]['answer']."\n"."......\n 000  返回更多问题";
 		}
 		return $content;
-	}	
+	}
+
+	
+	
 }
