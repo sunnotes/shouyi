@@ -151,11 +151,10 @@ class WeChat
 			$record = $this->ado->getlast();
 			$record_date = strtotime($record['date']);
 			$content = "最新收益播报:\n".
-					date('n月j号',$record_date).' ('.$this->weekarray[date('w',$record_date)].")\n".		
-					'七日年化收益: '.$record['rate']."%\n".
+					date('n月j号',$record_date).' ('.$this->weekarray[date('w',$record_date)].")\n".						
 					'万份收益: '.$record['profit']."元\n".
 					$record['tendency'].
-					"\n";
+					"\n七日年化收益: ".$record['rate']."%\n";
 		}elseif ($request == 'h'||$request == '帮助'||$request == '?'||$request == '？'){
 			//帮助
 			$type = self::TEXT_HELP;
@@ -225,13 +224,12 @@ class WeChat
 			$record_date = strtotime($record['date']);
 			$content = "最新收益播报:\n".
 					date('n月j号',$record_date).'('.$this->weekarray[date('w',$record_date)].")\n".			
-					'七日年化收益: '.$record['rate']."%\n".
 					'万份收益: '.$record['profit']."元\n".
 					$record['tendency'].
-					"\n\n\n收益会在".			
+					"\n七日年化收益: ".$record['rate']."%\n\n收益会在".			
 					date('j',$record_date+86400).'号 ('.
-					$this->weekarray[date('w',$record_date+86400)].')15:00 前发放到余额宝账户。'.
-					"\n------\n微信关注余额宝快报，收益早知道！";
+					$this->weekarray[date('w',$record_date+86400)].') 15:00 前发放到余额宝账户。'.
+					"\n------\n微信关注[余额宝快报]，收益早知道！";
 		}else {
 			$qa = new Question();
 			$content = $qa->getQuestionList($request);
