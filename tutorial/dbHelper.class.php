@@ -15,11 +15,19 @@ class DBHelper
 	 */
 	public function getlast()
 	{
-		$sql = "SELECT date  , profit ,rate  FROM fund ORDER BY DATE DESC LIMIT 1;";
+		$sql = "SELECT date  , profit ,rate  FROM fund ORDER BY DATE DESC LIMIT 2;";
 		$data = $this->mysql->getData( $sql );
 		$record['date'] = $data[0]['date'];
 		$record['profit'] = $data[0]['profit'];
 		$record['rate'] = $data[0]['rate'];
+		$tendency = bccomp($data[0]['profit'],$data[1]['profit'],4);
+		if($tendency==1){
+			$record['tendency'] = '较昨日上涨'.strval(floatval($data[0]['profit'])-floatval($data[1]['profit']));
+		}elseif ($tendency==-1){
+			$record['tendency'] = '较昨日下跌'.strval(floatval($data[1]['profit'])-floatval($data[0]['profit']));
+		}else{
+			$record['tendency'] = '与昨日持平';
+		}
 		return $record;
 	}
 	

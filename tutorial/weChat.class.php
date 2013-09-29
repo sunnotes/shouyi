@@ -150,11 +150,13 @@ class WeChat
 			$type = self::TEXT_CX;
 			$record = $this->ado->getlast();
 			$record_date = strtotime($record['date']);
-			$content = "最新收益播报：\n".
-					date('n月j号',$record_date).' ('.$this->weekarray[date('w',$record_date)].")\n".
+			$content = "最新收益播报:\n".
+					date('n月j号',$record_date).' ('.$this->weekarray[date('w',$record_date)].")\n".		
+					'七日年化收益: '.$record['rate']."%\n".
 					'万份收益: '.$record['profit']."元\n".
-					'七日年化收益: '.$record['rate'].'% ';
-		}elseif ($request == 'h'||$request == '帮助'||$request == '?'){
+					$record['tendency'].
+					"\n";
+		}elseif ($request == 'h'||$request == '帮助'||$request == '?'||$request == '？'){
 			//帮助
 			$type = self::TEXT_HELP;
 			$content = "您好，我是小宝/:pig：\n\n".
@@ -182,11 +184,10 @@ class WeChat
 			$earn = number_format($earn,2);
 			$content = '您输入的金额为'.$money. '元，万份收益为'.
 					$record['profit'].'元。'."\n\n".
-					'恭喜您，您'.date('j',$record_date).'号('.$this->weekarray[date('w',$record_date)].
+					'恭喜您，您'.date('j',$record_date+86400).'号('.$this->weekarray[date('w',$record_date+86400)].
 					')能收益 '.$earn.'元 !/:handclap '.
-					"\n\n".
-					'------'."\n".
-					date('j',$record_date).'号的收益会在'.						
+					"\n\n------\n".
+					'收益会在'.						
 					date('j',$record_date+86400).
 					'号 15:00 前发放到余额宝帐户。';
 		}elseif (preg_match('/^[\d]{3}$/', $request)){
@@ -205,31 +206,32 @@ class WeChat
 			$type = self::TEXT_WJ;
 			$question = $res[2];
 			$content ="您提交的建议是: $question /:share\n小宝会尽快与您联系,感谢您对小宝的关注。/:,@-D";
+		}elseif (preg_match('/^(l)(.+)$/', $request,$res)){
+			$type = self::TEXT_GL;
 		}elseif (preg_match('/^(w)(.+)$/', $request,$res)){
 			$type = self::TEXT_WJ;
 			$question = $res[2];
+			$content ="您提交的问题是: $question /:?\n\n";
 			$qa = new Question();
-			$content = $qa->getQuestionList($question);
-			if ($content == false) {
-				$content ="您提交的问题，小宝还不知道怎么回答./:P-( \n小宝会尽快与您联系,感谢您对小宝的关注。/:,@-D";;
+			$reply = $qa->getQuestionList($question);		
+			if ($reply == false) {
+				$content =$content."您提交的问题，小宝还不知道怎么回答。/:P-( 小宝会尽快与您联系,感谢您对小宝的关注。/:,@-D";;
+			}else{
+				$content = $content.$reply;
 			}
 		}elseif ($request == 'eason'){
 			$type = self::TEXT_GL;
 			$record = $this->ado->getlast();
 			$record_date = strtotime($record['date']);
-			$content = "最新收益播报：\n".
-					date('n月j号',$record_date).'('.$this->weekarray[date('w',$record_date)].")\n".
+			$content = "最新收益播报:\n".
+					date('n月j号',$record_date).'('.$this->weekarray[date('w',$record_date)].")\n".			
+					'七日年化收益: '.$record['rate']."%\n".
 					'万份收益: '.$record['profit']."元\n".
-					'七日年化收益: '.$record['rate'].'% '.
-					"\n\n".			
-					"\n".
-					'今天的收益会在'.
-					date('j',$record_date+86400).' 号 ('.
+					$record['tendency'].
+					"\n\n\n收益会在".			
+					date('j',$record_date+86400).'号 ('.
 					$this->weekarray[date('w',$record_date+86400)].')15:00 前发放到余额宝账户。'.
-					"\n".
-					'------'.
-					"\n".
-					'关注余额宝快报，收益早知道！';
+					"\n------\n微信关注余额宝快报，收益早知道！";
 		}else {
 			$qa = new Question();
 			$content = $qa->getQuestionList($request);
