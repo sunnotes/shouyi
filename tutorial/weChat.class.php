@@ -226,9 +226,9 @@ class WeChat
 					date('n月j号',$record_date).'('.$this->weekarray[date('w',$record_date)].")\n".			
 					'万份收益: '.$record['profit']."元\n".
 					$record['tendency'].
-					"\n七日年化收益: ".$record['rate']."%\n\n收益会在".			
+					"\n七日年化收益: ".$record['rate']."%\n\n输入余额宝已确认的金额，可以计算".			
 					date('j',$record_date+86400).'号 ('.
-					$this->weekarray[date('w',$record_date+86400)].') 15:00 前发放到余额宝账户。'.
+					$this->weekarray[date('w',$record_date+86400)].') 的收益额，收益会在15:00 前发放到余额宝账户。'.
 					"\n------\n微信关注[余额宝快报]，收益早知道！";
 		}else {
 			$qa = new Question();
