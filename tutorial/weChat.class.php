@@ -180,7 +180,7 @@ class WeChat
 			$record = $this->ado->getlast();
 			$record_date = strtotime($record['date']);
 			$earn = $money * $record['profit'] /10000 ;
-			$earn = number_format($earn,2);
+			$earn = round($earn,2);
 			$content = '您输入的金额为'.$money. '元，万份收益为'.
 					$record['profit'].'元。'."\n\n".
 					'恭喜您，您'.date('j',$record_date+86400).'号('.$this->weekarray[date('w',$record_date+86400)].
