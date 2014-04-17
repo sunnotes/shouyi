@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="0dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="0dip" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/income_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dip"
+                    android:paddingTop="10dip"
+                    android:singleLine="true"
+                    android:text="微信·财富宝"
+                    android:textColor="@color/green"
+                    android:textSize="15.0sp" />
+
+                <TextView
+                    android:id="@+id/income_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="5dip"
+                    android:singleLine="true"
+                    android:text="3888.89元"
+                    android:textColor="@color/black"
+                    android:textSize="15.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="0dip" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/income_date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dip"
+                    android:paddingTop="10dip"
+                    android:singleLine="true"
+                    android:text="最新收益"
+                    android:textColor="@color/gray"
+                    android:textSize="10.0sp" />
+
+                <TextView
+                    android:id="@+id/income_income"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    android:singleLine="true"
+                    android:text="5.12"
+                    android:textColor="@color/tomato"
+                    android:textSize="15.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:text="万份收益（元）"
+                android:textColor="@color/gray"
+                android:textSize="10.0sp" />
+
+            <TextView
+                android:id="@+id/income_profit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="10dip"
+                android:paddingTop="5dip"
+                android:singleLine="true"
+                android:text="1.454"
+                android:textColor="@color/black"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="0dip" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    android:singleLine="true"
+                    android:text="七日年化率"
+                    android:textColor="@color/gray"
+                    android:textSize="10.0sp" />
+
+                <TextView
+                    android:id="@+id/income_rate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="10dip"
+                    android:paddingTop="5dip"
+                    android:singleLine="true"
+                    android:text="5.09%"
+                    android:textColor="@color/black"
+                    android:textSize="15.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:background="@color/whitesmoke" />
+    </LinearLayout>
+
+</LinearLayout>
